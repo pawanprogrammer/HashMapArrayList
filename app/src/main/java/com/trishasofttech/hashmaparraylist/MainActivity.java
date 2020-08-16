@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,14 +44,22 @@ public class MainActivity extends AppCompatActivity {
                 hashMap.put("usernamekey", username.getText().toString());
                 hashMap.put("emailkey", email.getText().toString());
                 hashMap.put("passwordkey", password.getText().toString());
-                Toast.makeText(MainActivity.this, "Data store Successfully", Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this, "Data store Successfully", Toast.LENGTH_LONG).show();
+                Snackbar.make(view,"Data store Successfully", Snackbar.LENGTH_LONG ).setAction("Retry",
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this, "click", Toast.LENGTH_SHORT).show();
+                            }
+                        }).show();
+
                 /*to clear the form*/
                 username.setText("");
                 email.setText("");
                 password.setText("");
             }
         });
-        
+
         /*to click on the view button for display the data from HashMap*/
         view.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,5 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 msg.setText(susername +"\n"+ semail + "\n" + spassword);
             }
         });
+
+
     }
 }
